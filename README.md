@@ -1,100 +1,112 @@
-# RedNotes — Note Taking Site
+📝 RedNotes
 
-A small full‑stack note-taking web app: React + Vite frontend and Node/Express + MongoDB backend.
+A full-stack MERN note-taking application with PDF export and shareable notes
 
-This repository contains two projects in one workspace:
-- `frontend/` — React app (Vite, Tailwind)
-- `backend/` — Express API (ESM) with Mongoose for MongoDB
+📌 Overview
 
----
+RedNotes is a minimal yet feature-rich note-taking web app that I built to demonstrate my skills in full-stack development with the MERN stack.
+It combines a React + Vite frontend with a Node.js/Express backend and MongoDB database, following industry-standard project structuring and best practices.
 
-## Key features
-- Create, read, update, delete notes
-- Export notes (PDF) from the frontend
-- Simple rate limiting middleware on the API
+This project highlights:
 
----
+Building a scalable REST API in Express
 
-## Tech stack
-- Frontend: React, Vite, Tailwind CSS
-- Backend: Node.js (ES modules), Express, Mongoose
-- Database: MongoDB (Atlas or self-hosted)
+Designing a responsive React frontend with Tailwind CSS
 
----
+Using MongoDB + Mongoose for data modeling
 
-## Repo layout
-```
-/frontend
-  /src        # React app sources (pages, components, utils)
-  package.json
-/backend
-  /src        # server.js, config, models, controllers, routes
-  .env        # local secrets (DO NOT COMMIT)
-  package.json
-README.md
-```
+Handling authentication, CRUD operations, and rate limiting
 
----
+Implementing PDF export and shareable read-only note links
 
-## Quick start
-Requirements: Node.js (recommended LTS 18 or 20), npm, a MongoDB connection string.
+🎯 Key Features
 
-1. Backend
+Notes CRUD: Create, update, delete, and view notes
 
-```powershell
-cd "D:\Project\Note Taking Site\backend"
+PDF Export: Download notes as professional-looking PDFs
+
+Sharable Links: Read-only view for sharing notes securely
+
+Security: Basic rate-limiting to protect against abuse
+
+Responsive Design: Works seamlessly across desktop and mobile
+
+🏗️ Tech Stack
+
+Frontend: React (Vite) + React Router + Tailwind CSS
+
+Backend: Node.js (Express, ESM) + REST API
+
+Database: MongoDB with Mongoose ODM
+
+Other Tools: dotenv, CORS, PDF libraries
+
+🔍 Why I Built This
+
+I wanted to create a project that is:
+
+Practical — note taking is universally useful
+
+Full-stack — demonstrates frontend + backend integration
+
+Extensible — features like PDF export and shareable links show ability to go beyond CRUD basics
+
+This project simulates the kind of real-world product features recruiters look for: usability, scalability, and clear code organization.
+
+📂 Architecture
+RedNotes/
+│── frontend/     # React + Vite client
+│── backend/      # Express.js server
+│    ├── src/
+│    │   ├── server.js      # Backend entry point
+│    │   ├── models/        # Mongoose models
+│    │   ├── routes/        # Express routes
+│    │   └── middleware/    # Rate limiting, validation
+│── .gitignore
+│── README.md
+
+
+Frontend → clean UI with React Router navigation, styled with Tailwind
+
+Backend → modular Express API, connected to MongoDB, secured with middleware
+
+Database → document-based schema for flexible note storage
+
+⚡ Highlights for Recruiters
+
+✅ Applied clean separation of concerns (frontend & backend folders)
+
+✅ Wrote code in ESM modules for modern Node.js
+
+✅ Used environment variables for secure DB configs
+
+✅ Implemented middleware patterns (rate limiting, error handling)
+
+✅ Applied Git best practices (.gitignore, separating node_modules, etc.)
+
+✅ Designed for scalability and extensibility
+
+🚀 How to Run (For Reviewers)
+# Clone repo
+git clone https://github.com/<your-username>/RedNotes.git
+
+
+Backend
+
+cd backend
 npm install
-# create .env (see below)
 npm start
-```
 
-2. Frontend (in separate terminal)
 
-```powershell
-cd "D:\Project\Note Taking Site\frontend"
+Frontend
+
+cd frontend
 npm install
 npm run dev
-```
-Open the URL shown by Vite (commonly `http://localhost:5173`).
-
----
-
-## Environment variables (backend/.env)
-Create `backend/.env` with:
-
-```
-MONGO_URI=your_mongo_connection_string
-PORT=5001
-```
-
-Important: Save the `.env` file as UTF‑8 (no BOM). If you see `MONGO_URI: undefined` on startup it is likely the file encoding is UTF‑16 with a BOM — re-save as UTF‑8.
-
-`backend/.env` is in `.gitignore`. Commit `backend/.env.example` instead (contains placeholders).
-
----
-
-## Backend notes
-- Entry: `backend/src/server.js` — loads env, connects to MongoDB, mounts routes, starts server.
-- DB: `backend/src/config/db.js` exposes `connectDB()` which calls `mongoose.connect(process.env.MONGO_URI)`.
-- Routes: `backend/src/routes/notesRoutes.js` mounted at `/api/notes`.
-- Models: `backend/src/models/Note.js` (Mongoose schema).
-
-Example API endpoints:
-- `GET /api/notes` — list notes
-- `POST /api/notes` — create note (body: `{ title, content, tags? }`)
-- `GET /api/notes/:id` — get note
-- `PUT /api/notes/:id` — update
-- `DELETE /api/notes/:id` — delete
-
----
-
-## Troubleshooting
-- `MONGO_URI` undefined: ensure `.env` exists in `backend/` and is UTF‑8 (no BOM). The project had a UTF‑16 BOM issue which prevented `dotenv` parsing.
-- Mongo connection errors: ensure your Atlas IP whitelist allows your IP (or use 0.0.0.0/0 for testing) and the connection string is correct.
-- CORS errors: dev frontend runs on `http://localhost:5173`. Confirm backend CORS allows this origin (server.js sets this in dev).
-
----
 
 
+App runs at:
 
-Which should I do next?
+Frontend → http://localhost:5173
+
+Backend API → http://localhost:5001/api/notes
