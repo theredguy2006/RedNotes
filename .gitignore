@@ -1,0 +1,17 @@
+# Ignore node modules for all packages
+node_modules
+
+# Ignore env files
+*.env
+
+# Dist/build output
+dist
+frontend/dist
+
+# OS files
+.DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
