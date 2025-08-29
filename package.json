@@ -1,0 +1,18 @@
+{
+  "name": "note-taking-site",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  },
+  "dependencies": {
+    "mongoose": "^8.16.1",
+    "nodemon": "^3.1.10",
+    "react-hot-toast": "^2.5.2",
+    "react-router": "^7.7.1",
+    "react-router-dom": "^7.7.1",
+    "concurrently": "^8.2.2"
+  }
+}
